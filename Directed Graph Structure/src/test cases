@@ -1,0 +1,89 @@
+{-
+Testing Plan
+
+ maxNodeID
+ Test Case 1:
+  Input: Graph [] [(0,1),(1,5),(10000,2000)]
+  Expected Output: Nothing
+  Actual Output: Nothing
+
+ Test Case 2:
+  Input: Graph [(Node 1 5), (Node (-5) 2)] []
+  Expected Output: Just 1
+  Actual Output: Just 1
+
+ Test Case 3:
+  Input: Graph [(Node 30 2), (Node 30 (-3))] [(2,3),(2,4)]
+  Expected Output: Just 30
+  Actual Output: Just 30
+
+ insertNode
+ Test Case 1:
+  Input: 5 (Graph [] [])
+  Expected Output: Graph [Node 0 5] []
+  Actual Output: Graph {getNodes = [Node {getNodeID = 0, getNodeVal = 5}], getEdges = []}
+
+ Test Case 2:
+  Input: (-1) (Graph [Node (-10) 2, Node (-5) 3, Node (-1) 1] [(5,3), (6,7)])
+  Expected Output: Graph [Node (-10) 2, Node (-5) 3, Node (-1) 1, Node 0 (-1)] [(5,3), (6,7)]
+  Actual Output: Graph {getNodes = [Node {getNodeID = -10, getNodeVal = 2},Node {getNodeID = -5, getNodeVal = 3},
+                    Node {getNodeID = -1, getNodeVal = 1},Node {getNodeID = 0, getNodeVal = -1}], getEdges = [(5,3),(6,7)]}
+
+ Test Case 3:
+  Input: "you" (Graph [Node 1 "how", Node 2 "are"] [])
+  Expected Output: Graph [Node 1 "how", Node 2 "are", Node 3 "you"]
+  Actual Output: Graph {getNodes = [Node {getNodeID = 1, getNodeVal = "how"},Node {getNodeID = 2, getNodeVal = "are"},
+                                    Node {getNodeID = 3, getNodeVal = "you"}], getEdges = []}
+  
+ removeNode
+ Test Case 1:
+  Input: 0 (Graph [] [(0,2),(15,75),(2000,1)])
+  Expected Output: Graph [] [(0,2),(15,75),(2000,1)]
+  Actual Output: Graph {getNodes = [], getEdges = [(0,2),(15,75),(2000,1)]}
+
+ Test Case 2:
+  Input: (-1324) (Graph [Node (-1323) 1324, Node (-1325) 1324, Node (-1324) 0] [((-1324),(-1324)),(15,(-1324)),((-1324), 5)])
+  Expected Output: Graph [Node (-1323) 1324, Node (-1325) 1324] []
+  Actual Output: Graph {getNodes = [Node {getNodeID = -1323, getNodeVal = 1324},
+                                    Node {getNodeID = -1325, getNodeVal = 1324}], getEdges = []}
+
+ Test Case 3:
+  Input: 2 (Graph [Node 1 'a', Node 3 'b', Node (-2) 'c'] [(1,3),(3,1)])
+  Expected Output: Graph [Node 1 'a', Node 3 'b', Node (-2) 'c'] [(1,3),(3,1)]
+  Actual Output: Graph {getNodes = [Node {getNodeID = 1, getNodeVal = 'a'},Node {getNodeID = 3, getNodeVal = 'b'},
+                                    Node {getNodeID = -2, getNodeVal = 'c'}], getEdges = [(1,3),(3,1)]}
+                          
+ lookupNode
+ Test Case 1:
+  Input: 0 (Graph [] [(0,0),(0,1),(1,0)])
+  Expected Output: Nothing
+  Actual Output: Nothing
+
+ Test Case 2:
+  Input: 0 (Graph [Node (-0) "True?", Node 1 "False", Node 0 "Also True"] [])
+  Expected Output: Just (Node 0 "True?")
+  Actual Output: Just (Node {getNodeID = 0, getNodeVal = "True?"})
+
+ Test Case 3:
+  Input: (-5) (Graph [Node 5 False, Node (-4) False, Node (-6) False] [(5,6),(7,8),(9,10)])
+  Expected Output: Nothing
+  Actual Output: Nothing
+
+ insertEdge
+ Test Case 1:
+  Input: (1,2) (Graph [Node 0 1, Node 1 2] [])
+  Expected Output: Nothing
+  Actual Output: Nothing
+
+ Test Case 2:
+  Input: (1,2) (Graph [Node 1 1, Node 2 2] [])
+  Expected Output: Just (Graph [Node 1 1, Node 2 2] [(1,2)])
+  Actual Output: Just (Graph {getNodes = [Node {getNodeID = 1, getNodeVal = 1},
+                                          Node {getNodeID = 2, getNodeVal = 2}], getEdges = [(1,2)]})
+
+ Test Case 3:
+  Input: (5,5) (Graph [Node 5 7, Node (-1) 3] [(5,5)])
+  Expected Output: Just (Graph [Node 5 7, Node (-1) 3] [(5,5)])
+  Actual Output: Just (Graph {getNodes = [Node {getNodeID = 5, getNodeVal = 7},
+                                          Node {getNodeID = -1, getNodeVal = 3}], getEdges = [(5,5)]})
+-}
