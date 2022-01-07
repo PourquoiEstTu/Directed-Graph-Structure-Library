@@ -4,4 +4,4 @@ Various functions such as inserting and removing nodes and edges as well as othe
 functions are contained within the program.
 To run the program, cd into the downloaded folder (called Directed Graph Structure) and
 use the command "stack ghci src/code.hs" to use the functions.
-The functions can be seen in the code.hs file which is in the src folder.
+The functions and a description of what they do can be seen in the code.hs file which is in the src folder.
